@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
-
 @Entity('users')
 export class User {
     @PrimaryColumn({ type: 'text' })
@@ -9,12 +8,17 @@ export class User {
     @Column({ type:'text', nullable: false })
     name: string;
 
-    @Column({ type: 'text', nullable: false })
+    @Column({ type: 'text',  unique: true })
     email: string;
 
     @Column({ type: 'text', nullable: false })
-    password: string;   
+    password: string;
 
     @Column({ type: 'integer', nullable: false, default: 1 })
-    type: number;
+    type: UserType;
+}
+
+export enum UserType{
+    admin,
+    users
 }

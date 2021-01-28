@@ -1,6 +1,6 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Patch, Post, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Req, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/auth/auth.guard';
-import { User } from './user.entity';
+import { UserDto } from 'src/Dtos/userDto';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -18,18 +18,8 @@ export class UsersController {
 
     @Patch(':id')
     @UseGuards(new AuthGuard())
-    update(@Body() data: any, @Param('id') id,@Req() req){
+    update(@Body() data: UserDto, @Param('id') id,@Req() req){
         return this.usersService.update(id, data, req.token.user);
     }
 
-
-    // @Post('register')
-    // async register(@Body() data,@Res() res) {
-    //      await this.usersService.register(data,res)
-    // }
-
-    // @Post('login')
-    // async login(@Body() data,@Res() res) {
-    //      await this.usersService.login(data,res)
-    // }
 }

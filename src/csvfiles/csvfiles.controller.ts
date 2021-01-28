@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post, Req, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AuthGuard } from 'src/auth/auth.guard';
 import { CsvfilesService } from './csvfiles.service';
@@ -8,7 +8,6 @@ export class CsvfilesController {
     constructor(
         private csvfilesService: CsvfilesService
     ){}
-
     
     @Get()
     @UseGuards(new AuthGuard())
