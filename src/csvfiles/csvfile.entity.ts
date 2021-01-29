@@ -1,6 +1,5 @@
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
-
 @Entity('csvFiles')
 export class CSVFile {
     
@@ -14,7 +13,7 @@ export class CSVFile {
     date: number;
 
     @Column({ type: 'jsonb', nullable: false })
-    records: any[];
+    records: any;
 
     @Column({ type:'text', nullable: false })
     creatorId: string;
